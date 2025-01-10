@@ -39,7 +39,7 @@
                             <input class="contactus" placeholder="Name" type="type" name="name" required>
                         </div>
                         <div class="col-md-12">
-                            <input class="contactus" placeholder="Provide valid email adress for our response" type="email" name="email" required>
+                            <input class="contactus" placeholder="email address" type="email" name="email" required>
                         </div>
                         <div class="col-md-12">
                             <input class="contactus" placeholder="Phone Number" type="number" name="phone" required>
