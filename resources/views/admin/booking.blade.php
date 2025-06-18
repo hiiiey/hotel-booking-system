@@ -68,7 +68,7 @@
                     <tr>
                         <td>{{$data->room_id}}</td>
                         <td>{{$data->name}}</td>
-                        <td><{{$data->email}} /td>
+                        <td>{{$data->email}}</td>
                         <td>{{$data->phone}}</td>
                         <td>{{$data->start_date}}</td>
                         <td>{{$data->end_date}}</td>
@@ -95,15 +95,20 @@
 
                         </td>
 
-                        <td>{{$data->room->room_title}}</td>
-                        <td>{{$data->room->price}}</td>
+                        <td>{{$data->room ? $data->room->room_title : 'Room not found'}}</td>
+                        <td>{{$data->room ? $data->room->price : 'N/A'}}</td>
                         <td>
+                            @if($data->room)
                             <img src="/room/{{$data->room->image}}">
+                            @else
+                            No image available
+                            @endif
                         </td>
 
 
                         <td>
-                            <a onclick="return confirm('Are you sure to delete this?');" class="btn btn-danger" href="{{url('delete_booking' ,$data->id)}}">Delete</a>
+                            <a onclick="return confirm('Are you sure to delete this?');" class="btn btn-danger"
+                                href="{{url('delete_booking' ,$data->id)}}">Delete</a>
                         </td>
 
                         <td>
