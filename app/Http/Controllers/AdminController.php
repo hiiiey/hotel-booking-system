@@ -113,6 +113,8 @@ class AdminController extends Controller
         $data = Room::find($id);
 
         $data->room_title = $request->title;
+        
+        $data->description = $request->description;
 
         $data->price = $request->price;
 
@@ -133,7 +135,7 @@ class AdminController extends Controller
 
         $data->save();
 
-        return redirect()->back();
+        return redirect('view_room')->with('message', 'Room updated successfully!');
     }
 
 

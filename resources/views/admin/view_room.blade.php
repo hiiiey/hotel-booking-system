@@ -39,6 +39,13 @@
     <div class="page-content">
         <div class="page-header">
             <div class="container-fluid">
+            
+                @if(session()->has('message'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{session()->get('message')}}
+                </div>
+                @endif
 
 
                 <table class="table_deg">
