@@ -160,7 +160,7 @@ class AdminController extends Controller
     {
         $booking = Booking::find($id);
 
-        $booking->status = 'approved';
+        $booking->status = 'approve';
 
         $booking->save();
 
