@@ -56,31 +56,35 @@ class AdminController extends Controller
 
     public function add_room(Request $request)
     {
+        // Validate input
+        $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'price' => 'required|numeric|min:0',
+            'type' => 'required',
+            'wifi' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:5120' // 5MB max size
+        ]);
+        
         $data = new Room;
 
         $data->room_title = $request->title;
-
         $data->description = $request->description;
-
         $data->price = $request->price;
-
         $data->wifi = $request->wifi;
-
         $data->room_type = $request->type;
 
         $image = $request->image;
 
         if ($image) {
             $imagename = time() . '.' . $image->getClientOriginalExtension();
-
             $request->image->move('room', $imagename);
-
             $data->image = $imagename;
         }
 
         $data->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Room added successfully!');
     }
 
     public function view_room()
